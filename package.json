@@ -1,0 +1,38 @@
+{
+  "name": "event-ticket-page",
+  "version": "1.0.0",
+  "description": "Page for buying and selling event tickets",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louisep1/event-ticket-page.git"
+  },
+  "author": "L P",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/louisep1/event-ticket-page/issues"
+  },
+  "homepage": "https://github.com/louisep1/event-ticket-page#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.5",
+    "multer": "^1.4.5-lts.1"
+  }
+}
