@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 const eventSchema = mongoose.Schema(
   {
-    // go back and add the user reference
     eventName: {
       type: String,
       required: [true, 'Event name required'],
@@ -11,15 +10,10 @@ const eventSchema = mongoose.Schema(
       type: String,
       required: [true, 'Event type required'],
     },
-    // date: {
-    //   type: Date,
-    //   required: [true, 'Date and time required'],
-    // },
     date: {
       type: String,
       required: [true, 'Date and time required'],
     },
-    // ? changed date in event model - maybe date needs to be a string and not an actual date, because there was an error that it (type: Date) doesnt conform to the correct format and won't display on lenovo laptop on edit event page
     startTime: {
       type: String,
       required: [true, 'Date and time required'],

@@ -17,13 +17,10 @@ const storage = multer.diskStorage({
   },
 })
 
-// CheckFileType function that gets passed in our middleware below - so that not just any file can be uploaded by user
 function checkFileType(file, cb) {
-  // expression:
   const filetypes = /jpg|jpeg|png/
 
-  // test (true or false) to make sure actual extension of file matches ine of the file types above:
-  // path.extname() bit is same as in config for naming the file
+  // test (true or false) to make sure actual extension of file matches ione of the file types above:
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
 
   // check mimetype e.g. image/jpeg
@@ -45,8 +42,6 @@ const flyer = multer({
 })
 
 // Route / endpoint
-// .single as one image
-// named this image so need to call image in frontend
 router.post('/', flyer.single('image'), (req, res) => {
   res.send(`/${req.file.path}`)
   console.log(req.file.path)

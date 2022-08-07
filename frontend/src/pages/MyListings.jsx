@@ -19,7 +19,6 @@ const MyListings = () => {
       dispatch(getMyEvents())
     }
 
-    // if no user or user is NOT a seller
     if (!user || (user && !user.seller)) {
       navigate('/')
     }
@@ -34,11 +33,9 @@ const MyListings = () => {
 
 
   useEffect(() => {
-    // I couldn't put this above because only want to call it once on load - above created a continuous loop
     dispatch(getUser())
 
     return () => {
-      // Anything in here is fired on component unmount AND BEFORE RENDER
       dispatch(reset())
       dispatch(resetUser())
     }

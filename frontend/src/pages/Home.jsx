@@ -27,7 +27,6 @@ const Home = () => {
 
   return (
     <div>
-      {/*  style={{ border: '3px solid black' }} */}
       <Container>
         <h2 className='pt-4'>Upcoming Events</h2>
         {isLoading ? <Spinner /> : events.length === 0 ? <p className='mt-3'>There are no events to be displayed</p> : (
@@ -38,14 +37,12 @@ const Home = () => {
                   placeholder="Search events here"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
-                // onBlur={() => setKeyword('')}
                 />
                 {keyword && <Button className='rounded' onClick={() => setKeyword('')} variant='danger'>X</Button>}
                 <InputGroup.Text className='ps-3'><FaSearch /></InputGroup.Text>
               </InputGroup>
             </Container>
 
-            {/* if keyword.length = 0 or if filter then details/title matches keyword, display: */}
             {keyword.length > 0 ?
               upcomingEvents
                 .filter(event =>

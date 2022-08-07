@@ -1,6 +1,3 @@
-// this page is for the user to update their details
-// so therefore need to make update user details functions in backend and frontend
-
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -12,16 +9,7 @@ import Ticket from '../components/Ticket'
 
 const OrderReceipt = () => {
   const location = useLocation()
-  // https://thewebdev.info/2022/03/08/how-to-use-usenavigate-passing-value-to-another-component-with-react-router-dom-v6/
-
-
-  //  ???????????????????
-  // we can't filter and pass in event like this because it is an array of event objects
-  // event: events.filter(event => event._id === item.item)[0]
-  // const [event, setEvent] = useState({})
   const [order, setOrder] = useState({})
-
-  // console.log(order)
 
   const { user } = useSelector(state => state.user)
   const { events, currency } = useSelector(state => state.event)
@@ -42,7 +30,6 @@ const OrderReceipt = () => {
       navigate('/')
     }
 
-    // before this dependency array was empty
   }, [dispatch, location.state])
 
   const formatDate = (date) => {

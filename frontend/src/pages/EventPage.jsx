@@ -23,10 +23,8 @@ const EventPage = () => {
   }, [])
 
   useEffect(() => {
-    // events is an empty array by default, so !events will still return true
     if (events.length > 0 && !isLoading) {
       setLoading(false)
-      // just using the isLoading state variable wouldn't work
     }
   }, [events, isLoading])
 

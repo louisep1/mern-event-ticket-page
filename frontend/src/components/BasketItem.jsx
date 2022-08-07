@@ -8,10 +8,6 @@ import { useEffect, useState } from 'react'
 const BasketItem = ({ item, currency, event }) => {
   const [date, setDate] = useState('')
 
-  // const [event, setEvent] = useState(null)
-  // console.log(item)
-  // console.log(event)
-
   const { events, isLoading } = useSelector(state => state.event)
 
   useEffect(() => {
@@ -21,7 +17,6 @@ const BasketItem = ({ item, currency, event }) => {
       setDate(dateFormatted)
     }
 
-    // setEvent(events.filter(event => event._id === item.item)[0])
   }, [isLoading])
 
 
@@ -33,9 +28,6 @@ const BasketItem = ({ item, currency, event }) => {
   }
 
 
-
-  // const dateSplit = new Date(event.date).toString().split(' ')
-  // const dateFormatted = `${dateSplit[0]} ${dateSplit[1]} ${dateSplit[2]} ${dateSplit[3]}`
 
   return (
     <>

@@ -8,9 +8,6 @@ const Ticket = ({ currency, ticket, event }) => {
 
   const [styleClass, setStyleClass] = useState('')
 
-  // console.log(event)
-  // console.log(event.date)
-
   useEffect(() => {
     if (event && event.date) {
       const pastEventCheck = new Date(event.date) < new Date() ? 'bg-light text-muted' : 'bg-white'
@@ -26,7 +23,6 @@ const Ticket = ({ currency, ticket, event }) => {
 
   return (
     <div className='py-2'>
-      {/* need checks for event/ticket/currency and each property/field */}
       {event && event.eventName && event.location && event.startTime && event.date && (
         <Card className={`${new Date(event.date) < new Date() ? 'bg-light text-muted' : 'bg-white'} mt-3`}>
           <LinkContainer to={`/event/${ticket.item}`}>
@@ -51,18 +47,8 @@ const Ticket = ({ currency, ticket, event }) => {
       )}
       {ticket && ticket.seller && event && event.date && <LinkContainer to={`/seller/${ticket.seller}`} style={{ fontSize: '12px' }} className={new Date(event.date) < new Date() ? 'text-muted' : ''}>
         <i>Click <u>here</u> to contact seller.</i>
-        {/* Ticket sold by {ticket.seller}  */}
       </LinkContainer>}
-
-      {/* {new Date(event.date)},  */}
-      {/* it didn't like this */}
-
-      {/* date: "2022-07-10" */}
-
       <div></div>
-
-      {/* link to event page - item: "62b492992a079848f2e4d55a" */}
-      {/* link to seller details - maybe need a getUser/getSeller function for this seller: "62b471c5e5ed71a709cb1b9f" */}
 
     </div>
   )

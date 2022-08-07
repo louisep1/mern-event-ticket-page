@@ -86,7 +86,6 @@ const signUp = asyncHandler(async (req, res) => {
 // @access   Private
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
-  // or could use params
 
   const {
     name,
@@ -99,8 +98,6 @@ const updateUser = asyncHandler(async (req, res) => {
     code,
     country,
   } = req.body
-
-  // console.log(req.body)
 
   if (user) {
     const updated =
@@ -229,7 +226,6 @@ const deleteFromBasket = asyncHandler(async (req, res) => {
   const removed = user.basket.filter(
     item => item._id.toString() !== req.body.basketId
   )
-  // console.log(removed)
 
   const updated = await User.findByIdAndUpdate(user._id, {
     basket: removed,
@@ -251,14 +247,12 @@ const deleteFromBasket = asyncHandler(async (req, res) => {
   } else {
     throw new Error('Item could not be removed from basket')
   }
-  // basketId is from req.body.basketId
 })
 
 // @ desc    Remove all items from basket
 // @route    PUT /api/user/:id/deleteAll
 // @access   Private
 const clearBasket = asyncHandler(async (req, res) => {
-  //when user clears all OR when payment is submitted so items no longer in basket
   const user = await User.findById(req.params.id)
   if (!user) {
     res.status(404)
@@ -269,7 +263,6 @@ const clearBasket = asyncHandler(async (req, res) => {
     basket: [],
   })
 
-  // ? maybe we don't even need to return this json because just an empty array
   if (updated) {
     res.status(200).json({
       basket: [],
@@ -297,13 +290,11 @@ const createOrder = asyncHandler(async (req, res) => {
     !code ||
     !country
   ) {
-    // paid is a false boolean so this wouldn't work
-    // !paid || !paidOn   (empty string)
     res.status(400)
     throw new Error('Insufficient order data')
   }
 
-  // multiple ticket items in the ticket array so cannot destructure it - instead - check for data:
+  // multiple ticket items in the ticket array so cannot destructure it - instead - check for data with map:
   tickets.map(ticket => {
     if (
       !ticket.item ||
@@ -321,7 +312,6 @@ const createOrder = asyncHandler(async (req, res) => {
     tickets.map(async ticket => {
       const currentTicket = await Event.findById(ticket.item)
       if (currentTicket && currentTicket.availableTickets < ticket.quantity) {
-        // res.status(200) // I don't know what this code should be
         res.status(500)
         throw new Error('Not enough tickets available')
       }
@@ -351,12 +341,6 @@ const createOrder = asyncHandler(async (req, res) => {
 
   if (updateUser) {
     res.status(200).json({ jsonData: 'success' })
-
-    // const updatedUser = await User.findById(req.user).select('-password')
-
-    // if (updatedUser) {
-    //   res.status(200).json(updatedUser)
-    // }
   } else {
     res.status(400)
     throw new Error('Order could not be created')

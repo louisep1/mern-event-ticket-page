@@ -25,7 +25,6 @@ const BasketPage = () => {
     if (user && user.name && !isLoading && !isSuccess) {
       dispatch(getUser())
     }
-    // !!!basically, without checking user, if the user is not logged in then this created an infinite loop - same for billing and payment pages
 
     if ((user && user.seller) || !user) {
       navigate('/')
@@ -51,8 +50,6 @@ const BasketPage = () => {
               <Col md={6} className='position-relative'>
                 {/* for each basket item: */}
                 {events.length === 0 ? <Spinner /> : (!user || !user.basket || user.basket.length === 0) ? <div className='pt-2'>There are no tickets to show</div> : user.basket.map(item => <BasketItem key={item._id} item={item} currency={currency} event={events.filter(event => event._id === item.item)[0]} />)}
-                {/* .slice() */}
-                {/* event={events.filter(event => event._id === item.item)[0]} */}
 
                 {events.length > 0 && user && user.basket && user.basket.length > 0 && (
                   <>
@@ -67,9 +64,7 @@ const BasketPage = () => {
 
               <Col md={1}></Col>
               <Col md={5}>
-                {/* stuck as to md=4 or md=5 */}
                 <div>
-                  {/* style={{ width: '18rem' }} */}
                   <Card className='mt-3 mb-4 p-1'>
                     <Card.Header className='fw-bold'>Contact Details</Card.Header>
 
@@ -93,7 +88,6 @@ const BasketPage = () => {
                           {currency} {(Math.round((Number(user.basket.reduce((a, b) => a + (b.ticketPrice * b.quantity), 0))) * 100) / 100).toFixed(2)}
                         </ListGroup.Item>
                       )}
-                      {/* I don't think this Number() is necessary, but I put it just in case */}
                     </ListGroup>
                   </Card>
                   {events.length > 0 && user && user.basket && user.basket.length > 0 && <Button className='ms-2 mt-4' onClick={() => navigate('/billing')}>Proceed to payment</Button>}

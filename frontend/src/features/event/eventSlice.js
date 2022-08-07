@@ -47,23 +47,6 @@ export const getMyEvents = createAsyncThunk(
   }
 )
 
-// export const getEvent = createAsyncThunk(
-//   '/api/event/getEvent',
-//   async (eventId, thunkAPI) => {
-//     try {
-//       return await eventService.getEvent(eventId)
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.query ||
-//         error.toString()
-//       return thunkAPI.rejectWithValue(message)
-//     }
-//   }
-// )
-
 export const postEvent = createAsyncThunk(
   '/api/event/postEvent',
   async (newEventData, thunkAPI) => {
@@ -82,13 +65,9 @@ export const postEvent = createAsyncThunk(
   }
 )
 
-// it seems like this function cannot accept more than one argument (because of thunkAPI ???)
-// instead pass the data and if together in the same object
-// this means the id gets sent with the rest of the data though - but maybe it has no effect as there is no id field saved under the schema ????
 export const updateEvent = createAsyncThunk(
   '/api/events/update/eventId',
   async (updatedEvent, thunkAPI) => {
-    // console.log(updatedEvent.eventId)
     try {
       const token = await thunkAPI.getState().user.user.token
       return await eventService.updateEvent(
@@ -196,7 +175,6 @@ const eventSlice = createSlice({
       .addCase(getMyEvents.fulfilled, (state, action) => {
         state.isLoading = false
         state.getMySuccess = true
-        // this can't be the same as isSuccess / isError, because then the reset doesn't work properly and then can't go to the add new listing page
         state.sellerEvents = action.payload
       })
       .addCase(getMyEvents.rejected, (state, action) => {

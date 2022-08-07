@@ -5,12 +5,9 @@ const API_URL = '/api/user/'
 const signIn = async signInData => {
   const { data } = await axios.post(`${API_URL}/signIn`, signInData)
   if (data) {
-    // console.log(data)
     localStorage.setItem(
       'user',
       JSON.stringify({
-        // address: data.address,
-        // contactNo: data.contactNo,
         email: data.email,
         name: data.name,
         seller: data.seller,
@@ -73,7 +70,6 @@ const updateUser = async (updatedData, userId, token) => {
 }
 
 const getUser = async (userId, token) => {
-  // config stuff
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -86,7 +82,6 @@ const getUser = async (userId, token) => {
 
 // Basket:
 const addToBasket = async (itemData, userId, token) => {
-  // config stuff
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -123,7 +118,7 @@ const clearBasket = async (userId, token) => {
   return data
 }
 
-// Order
+// Order:
 const createOrder = async (orderData, token) => {
   const config = {
     headers: {
@@ -135,9 +130,8 @@ const createOrder = async (orderData, token) => {
   return data
 }
 
-// Seller
+// Seller:
 const getSeller = async (sellerId, token) => {
-  // config stuff
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

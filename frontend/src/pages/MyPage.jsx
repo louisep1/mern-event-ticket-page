@@ -1,6 +1,3 @@
-// this page is for the user to update their details
-// so therefore need to make update user details functions in backend and frontend
-
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -10,7 +7,6 @@ import { BsBackspace } from 'react-icons/bs'
 
 const MyPage = () => {
   const location = useLocation()
-  // https://thewebdev.info/2022/03/08/how-to-use-usenavigate-passing-value-to-another-component-with-react-router-dom-v6/
   const [editing, setEditing] = useState(false)
   const { user, updatedSuccess } = useSelector(state => state.user)
 
@@ -41,7 +37,6 @@ const MyPage = () => {
       setEditing(true)
     }
 
-    // if no user
     if (!user) {
       navigate('/')
     }
@@ -88,7 +83,6 @@ const MyPage = () => {
   }
 
   const updateDetails = e => {
-    // different response depending on if billing address or contact details being updated
     if (e.target.name === 'contact') {
       const contactData = { ...updatedUser, updateAddress: false }
       dispatch(updateUser(contactData))
@@ -186,9 +180,6 @@ const MyPage = () => {
             </Col>
 
           </Row>
-
-          {/* <Button onClick={() => setEditing(false)}>Update</Button> */}
-          {/* later make this a proper submit function that dispatches an update too */}
         </>
 
       )}

@@ -33,7 +33,6 @@ const NavBar = () => {
   const dispatch = useDispatch()
   const location = useLocation()
 
-  // console.log(location.pathname)
   const [hover, setHover] = useState(false)
 
   const logOut = () => {

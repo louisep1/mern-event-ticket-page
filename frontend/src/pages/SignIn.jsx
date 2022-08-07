@@ -28,7 +28,6 @@ const SignIn = () => {
       navigate('/')
     }
     if (isError) {
-      // alert('Sign in details incorrect')
       alert(message)
       dispatch(reset())
     }
@@ -62,7 +61,6 @@ const SignIn = () => {
         dispatch(signUp(data))
       }
     }
-    // dispatch signIn or signUp with corresponding data depending on signingIn/signingUp state
   }
 
   return (

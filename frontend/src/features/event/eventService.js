@@ -7,11 +7,6 @@ const getEvents = async () => {
   return data
 }
 
-// const getEvent = async eventId => {
-//   const { data } = await axios.get(API_URL + eventId)
-//   return data
-// }
-
 const getMyEvents = async (token, userId) => {
   const config = {
     headers: {
@@ -77,7 +72,6 @@ const updateAvailableTickets = async (eventData, token) => {
 
 const eventService = {
   getEvents,
-  // getEvent,
   getMyEvents,
   postEvent,
   updateEvent,

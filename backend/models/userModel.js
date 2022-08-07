@@ -71,7 +71,6 @@ const userSchema = mongoose.Schema(
       },
     ],
     // each order is an object -- with a tickets array and a payment object
-    // tickets array is more or less same as basket but minus event info
     orders: [
       {
         tickets: [

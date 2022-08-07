@@ -34,16 +34,6 @@ const getMyEvents = asyncHandler(async (req, res) => {
   }
 })
 
-// !!! I DON'T THINK I'M USING THIS IN THE FRONTEND
-// @ desc    Get a specific event
-// @route    GET /api/event/:id
-// @access   Public
-// const getEvent = asyncHandler(async (req, res) => {
-//   const event = await Event.findById(req.params.id)
-
-//   res.status(200).json(event)
-// })
-
 // @ desc    Add a new event to the database
 // @route    POST /api/event/
 // @access   Private
@@ -81,8 +71,6 @@ const postEvent = asyncHandler(async (req, res) => {
     throw new Error('Required input data missing')
   }
 
-  // !!! check data types and throw error if don't match (do same for update too)
-
   if (req.user.seller) {
     const event = await Event.create({
       eventName,
@@ -118,14 +106,8 @@ const postEvent = asyncHandler(async (req, res) => {
 // @route    Put /api/event/update/:id
 // @access   Private
 const updateEvent = asyncHandler(async (req, res) => {
-  // !!! check data types and throw error if don't match
-
   if (req.user.seller) {
-    // console.log(req.body)
     const checkMatch = await Event.findById(req.params.id)
-
-    // console.log(req.user._id)
-    // console.log(checkMatch.createdBy)
 
     // Check logged in user matches the createdBy user:
     if (checkMatch.createdBy.toString() === req.user._id.toString()) {
@@ -155,13 +137,10 @@ const updateEvent = asyncHandler(async (req, res) => {
 const deleteEvent = asyncHandler(async (req, res) => {
   if (req.user.seller) {
     const checkMatch = await Event.findById(req.params.id)
-    // console.log(checkMatch)
-    // console.log('test')
 
     if (checkMatch.createdBy.toString() === req.user._id.toString()) {
       await checkMatch.remove()
 
-      // res.status(200).json({ result: deleted })
       res.status(200).json(req.params.id)
     } else {
       res.status(401)
@@ -180,8 +159,6 @@ const deleteEvent = asyncHandler(async (req, res) => {
 // @access   Private
 const updateAvailableTickets = asyncHandler(async (req, res) => {
   const { quantity } = req.body
-
-  // console.log(quantity)
 
   const event = await Event.findById(req.params.id)
 
@@ -209,7 +186,6 @@ const updateAvailableTickets = asyncHandler(async (req, res) => {
 
 module.exports = {
   getEvents,
-  // getEvent,
   getMyEvents,
   postEvent,
   updateEvent,

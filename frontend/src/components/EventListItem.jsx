@@ -9,23 +9,6 @@ import { useNavigate } from 'react-router-dom'
 import { addToBasket } from '../features/user/userSlice'
 
 
-// eventName,
-//   eventType,
-//   date,
-//   startTime,
-//   endTime,
-//   priceFull,
-//   priceBasic,
-//   availableTickets,
-//   briefSummary,
-//   fullDescription,
-//   image,
-// location
-
-
-// page={false} => default => it is just a normal list item and shows see more button and shows a summarised description
-// page={true} => hide see more button and add full length version of description
-
 const EventListItem = ({ event, page }) => {
 
   const [ticket, setTicket] = useState({})
@@ -75,8 +58,6 @@ const EventListItem = ({ event, page }) => {
   }
 
 
-
-  // !!! I'm actually not sure if this is correct/exhaustive:
   if (event && event.eventName && event._id && event.image && event.briefSummary && event.fullDescription && event.startTime && event.endTime && event.priceFull && event.location && event.ticketPrices) {
     return (
 
@@ -124,7 +105,6 @@ const EventListItem = ({ event, page }) => {
             {/* if tickets are in stock...  */}
             {event.availableTickets > 0 ? (
               <>
-                {/* {event.availableTickets <= 10 && <p className='fst-italic ps-2'>Only {event.availableTickets} ticket{event.availableTickets > 1 && 's'} remaining!</p>} */}
 
                 {event.availableTickets <= 10 && <Alert variant='info' className='fst-italic ps-3 py-2 my-2' style={{ width: '14rem' }}>Only {event.availableTickets} ticket{event.availableTickets > 1 && 's'} remaining!</Alert>}
 
@@ -132,11 +112,8 @@ const EventListItem = ({ event, page }) => {
                   <Form.Group className="mb-3 mt-1">
                     <Form.Select onChange={(e) => setTicket({ ticketType: e.target.value.split(',')[0], ticketPrice: e.target.value.split(',')[1] })}>
 
-                      {/* <Form.Select onChange={(e) => console.log(e.target.value)}> */}
                       <option value={["invalid", "invalid"]}>Select ticket</option>
 
-                      {/* map through ticketPrices and display name and price as an option */}
-                      {/* then set the component level state to match the selected ticket */}
 
                       {event.ticketPrices.map((ticket, i) => (
                         <option key={i} value={[ticket.ticketType, ticket.ticketPrice]}>{currency}{ticket.ticketPrice} --- {ticket.ticketType} - </option>

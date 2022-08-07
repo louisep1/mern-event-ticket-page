@@ -146,7 +146,7 @@ export const clearBasket = createAsyncThunk(
   }
 )
 
-// Order
+// Order:
 export const createOrder = createAsyncThunk(
   'api/user/orders/new',
   async (orderData, thunkAPI) => {
@@ -193,7 +193,6 @@ const userSlice = createSlice({
       state.isSuccess = false
       state.isError = false
       state.message = ''
-      // do we even need these... ?
       state.basketSuccess = false
       state.basketError = false
       state.removeBasketSuccess = false
@@ -271,8 +270,6 @@ const userSlice = createSlice({
       .addCase(addToBasket.fulfilled, (state, action) => {
         state.isLoading = false
         state.basketSuccess = true
-        // state.user.basket = action.payload.basket
-        // this didn't work, and maybe don't need it/ don't need to return any payload data, as long as calling getUser() after every fulfilled addToBasket
       })
       .addCase(addToBasket.rejected, (state, action) => {
         state.isLoading = false
@@ -314,7 +311,6 @@ const userSlice = createSlice({
       .addCase(createOrder.fulfilled, (state, action) => {
         state.isLoading = false
         state.orderSuccess = true
-        // state.user = action.payload
       })
       .addCase(createOrder.rejected, (state, action) => {
         state.isLoading = false

@@ -6,8 +6,6 @@ import { Container, Card, Button } from 'react-bootstrap'
 import { AiFillPhone } from 'react-icons/ai'
 import { BsFillPersonFill, BsBackspace } from 'react-icons/bs'
 
-// the seller's user id is in the url => need to use this to get the seller's details from the backend
-
 const SellerPage = () => {
   const params = useParams()
   const navigate = useNavigate()
@@ -35,7 +33,6 @@ const SellerPage = () => {
           <Card.Header><BsFillPersonFill /> {seller.name}</Card.Header>
 
           <Card.Body>
-            {/* <Card.Title><BsFillPersonFill /> {seller.name}</Card.Title> */}
             <Card.Text>
               <AiFillPhone /> {seller.contactNo}
             </Card.Text>

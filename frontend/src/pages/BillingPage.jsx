@@ -36,7 +36,6 @@ const BillingPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    // https://stackoverflow.com/questions/33188994/scroll-to-the-top-of-the-page-after-render-in-react-js
 
     return () => {
       window.scrollTo(0, 0)
@@ -44,24 +43,13 @@ const BillingPage = () => {
   }, [])
 
   useEffect(() => {
-    // if (!isLoading && !isSuccess) {
-    //   dispatch(getUser())
-    // }
-
-    // if (user.seller) {
-    //   navigate('/')
-    // }
-
-    // new code:
     if (user && user.name && !isLoading && !isSuccess) {
       dispatch(getUser())
     }
-    // !!!basically, without checking user, if the user is not logged in then this dispatch(getUser()) created an infinite loop - same for billing and payment pages
 
     if ((user && user.seller) || !user) {
       navigate('/')
     }
-
 
     if (user && user.basket && user.basket.length === 0) {
       navigate('/')
@@ -76,7 +64,6 @@ const BillingPage = () => {
         code: location.state.address.code,
         country: location.state.address.country
       })
-      // setAddress(location.state.address)
     } else if (user && user.address) {
       setAddress({
         line1: user.address.line1,

@@ -58,7 +58,6 @@ const PaypalButton = ({ currency, amount, showSpinner, tickets, address }) => {
     <PayPalButtons
       style={{ "layout": "vertical" }}
       disabled={false}
-      // forceReRender={[amount, currency, style]}
       forceReRender={[currency, amount, showSpinner, tickets, address]}
       fundingSource={undefined}
       createOrder={(data, actions) => {
@@ -68,20 +67,17 @@ const PaypalButton = ({ currency, amount, showSpinner, tickets, address }) => {
               {
                 amount: {
                   currency_code: currency,
-                  // value: '2',
                   value: amount
                 },
               },
             ],
           })
           .then((orderId) => {
-            // Your code here after create the order
             return orderId;
           });
       }}
       onApprove={async function (data, actions) {
         const order = await actions.order.capture()
-        // Your code here after capture the order
         console.log(order);
         if (order && order.status === 'COMPLETED') {
           console.log('Finished');
@@ -95,89 +91,5 @@ const PaypalButton = ({ currency, amount, showSpinner, tickets, address }) => {
   </>
   );
 }
-
-
-
-// import { useState } from 'react'
-// import { PayPalButtons } from "@paypal/react-paypal-js"
-
-// const PaypalButton = (props) => {
-//   const { product } = props
-
-//   const [paidFor, setPaidFor] = useState(false)
-//   const [error, setError] = useState(null)
-
-
-//   const handleApprove = (orderId) => {
-//     // call backend function to fulfill order
-
-//     // if response is success
-//     setPaidFor(true)
-
-//     // refresh user's account or subscription status
-
-//     // if the response returns error
-//     // setError('Your purchase could not be made.')
-//   }
-
-//   if (paidFor) {
-//     // Display success message, or redirect user to success page
-//     alert('Thank you for your purchase')
-//   }
-
-//   if (error) {
-//     // Display error message, modal or redirect user to error page
-//     alert(error)
-//   }
-
-//   return (
-//     <PayPalButtons
-//       onClick={(data, actions) => {
-//         // Validate on button click or server side
-//         const hasAlreadyBought = false
-
-//         if (hasAlreadyBought) {
-//           setError('You already bought this item. Go to your account to view.')
-
-//           return actions.reject()
-//         } else {
-//           return actions.resolve()
-//         }
-//       }}
-
-//       createOrder={(data, actions) => {
-//         return actions.order.create({
-//           purchase_units: [
-//             {
-//               description: product.description,
-//               amount: {
-//                 value: product.price
-//               }
-//             }
-//           ]
-//         })
-//       }}
-
-//       onApprove={async (data, actions) => {
-//         const order = await actions.order.capture
-//         console.log(order)
-
-//         handleApprove(data.orderID)
-//       }}
-
-//       onCancel={() => {
-//         // display cancel message, modal or redirect the user to the cancel page or back to cart
-
-//       }}
-
-//       onError={(err) => {
-//         setError(err)
-//         console.error("PaPal Checkout onError", err)
-//       }}
-//     />
-//   )
-// }
-
-
 
 export default PaypalButton

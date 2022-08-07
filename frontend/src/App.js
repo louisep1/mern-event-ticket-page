@@ -31,10 +31,6 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/create" element={<CreateEventPage />} />
-          {/* <Route
-            path="/edit/:id"
-            element={<CreateEventPage editing={true} />}
-          /> */}
           <Route path="/edit/:id" element={<CreateEventPage />} />
           <Route path="/my-page" element={<MyPage />} />
           <Route path="/listings" element={<MyListings />} />

@@ -18,8 +18,6 @@ const CreateEventPage = () => {
 
   const [ticketPrices, setTicketPrices] = useState([{ ticketType: '', ticketPrice: 0 }])
 
-  // console.log(ticketPrices)
-
   const [event, setEvent] = useState({
     eventName: '',
     eventType: '',
@@ -28,7 +26,6 @@ const CreateEventPage = () => {
     endTime: '',
     priceFull: 0,
     priceBasic: '',
-    // ticketPrices: [],
     availableTickets: 0,
     totalTickets: 0,
     briefSummary: '',
@@ -65,7 +62,6 @@ const CreateEventPage = () => {
     }
 
     // if !editing but edit is in the url, redirect
-    // !!! although I'm not entirely sure this covers everything
     if ((!urlLocation.state || !urlLocation.state.editing) && urlLocation.pathname.includes('edit')) {
       navigate('/')
     }
@@ -96,13 +92,8 @@ const CreateEventPage = () => {
         location: currentEvent.location
       })
 
-      // setTicketPrices(currentEvent.ticketPrices)
-      // this above wouldn't work - read only, would display but could not edit
-      // so i figured this out by myself to get it to work:
       const list = []
       currentEvent.ticketPrices.map((ticket, i) => {
-        // console.log(ticket)
-        // console.log(i)
         return list[i] = { ticketPrice: ticket.ticketPrice, ticketType: ticket.ticketType }
       })
       setTicketPrices(list)
@@ -116,21 +107,14 @@ const CreateEventPage = () => {
     setEvent(prevState => ({
       ...prevState,
       [e.target.id]: e.target.value,
-      // availableTickets: e.target.id === totalTickets ? (availableTickets - (prevState.totalTickets - e.target.value)) : prevState.availableTickets
     })
     )
-    // console.log(e.target.value)
-    // console.log(new Date(e.target.value))
   }
 
   // For uploading flyer images:
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0]
     const formData = new FormData()
-    // vanilla js to create form data using id of form (either in html or jsx), and form input fields to create data
-    // https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
-
-    // add this input field to the form data
     formData.append('image', file)
 
     setUploading(true)
@@ -144,7 +128,6 @@ const CreateEventPage = () => {
 
       const { data } = await axios.post('/api/flyer', formData, config)
 
-      // the data that gets sent back is the image path
       setEvent(prevState => ({
         ...prevState,
         image: data
@@ -161,7 +144,6 @@ const CreateEventPage = () => {
   const submitEvent = e => {
     e.preventDefault()
 
-    // right now, image and priceBasic are not compulsory
     if (!eventName || !eventType || !date || !startTime || !endTime || !priceFull || !ticketPrices || (!totalTickets && !availableTickets) || !briefSummary || !fullDescription || !location) {
       alert('Some event fields missing')
     } else {
@@ -194,7 +176,6 @@ const CreateEventPage = () => {
 
   const removeLast = () => {
     const list = [...ticketPrices]
-    // splice IS MUTATING - so it cannot be saved to a variable (this will just save the cut out bit)
     list.splice(ticketPrices.length - 1, 1)
     setTicketPrices(list)
   }
@@ -208,7 +189,6 @@ const CreateEventPage = () => {
       <Button className='my-3' onClick={() => navigate(-1)}><BsBackspace /> Go Back</Button>
 
       <Form onSubmit={submitEvent}>
-        {/* <h4 className='mt-4'>Billing address</h4> */}
         <Form.Group className="mb-3">
           <Form.Label className='mt-2'>Event Name</Form.Label>
           <Form.Control type="string" placeholder="Example Event" id='eventName' value={eventName} onChange={handleChange} />
@@ -218,7 +198,6 @@ const CreateEventPage = () => {
           <Form.Control type="string" placeholder="London, UK" id='location' value={location} onChange={handleChange} />
 
           <Form.Label className='mt-2'>Date</Form.Label>
-          {/* <Form.Control type="string" placeholder="Sunday 1st January 2000" id='date' value={date} onChange={handleChange} /> */}
           <Form.Control type="date" placeholder="Sunday 1st January 2000" id='date' value={date} onChange={handleChange} />
 
           <Form.Label className='mt-2'>Start Time</Form.Label>

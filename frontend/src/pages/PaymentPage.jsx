@@ -18,7 +18,6 @@ function PaymentPage() {
   const [address, setAddress] = useState({})
 
   const [paymentMethod, setPaymentMethod] = useState('')
-  // !!! initially, I wanted to default to be 'later' but couldn't do it, because the checked property wouldn't let me update state
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -37,7 +36,6 @@ function PaymentPage() {
       setLoading(false)
     }
 
-    // just check this works properly
     if (!location.state) {
       navigate(-1)
     }
@@ -46,7 +44,6 @@ function PaymentPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    // https://stackoverflow.com/questions/33188994/scroll-to-the-top-of-the-page-after-render-in-react-js
 
     return () => {
       window.scrollTo(0, 0)
@@ -57,7 +54,6 @@ function PaymentPage() {
     if (user && user.name && !isLoading && !isSuccess) {
       dispatch(getUser())
     }
-    // !!!basically, without checking user, if the user is not logged in then this created an infinite loop - same for billing and payment pages
 
     if ((user && user.seller) || !user) {
       navigate('/')
@@ -87,7 +83,6 @@ function PaymentPage() {
 
   const confirmOrder = () => {
     // this section is the actual adding order functionality:
-
     // backend checks if enough tickets available
 
     if (paymentMethod !== '') {
@@ -105,10 +100,8 @@ function PaymentPage() {
           paymentMethod,
           billingAddress: address,
           orderedOn: new Date(),
-          // .toString()
         }
       }
-      // console.log(orderDetails)
       dispatch(createOrder(orderDetails))
     } else {
       alert('Please select a payment method and check billing details entered correctly')
@@ -156,10 +149,7 @@ function PaymentPage() {
                     id='later'
                     value='Pay later'
                     label='Pay later'
-                    // !!! this name property is necessary for the radio buttons to actually work and only select one button
                     name='paymentMethod'
-                    // checked
-                    // If I have this checked, then it will not update the state if I change it to back and then cannot change back to later...
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
                   <Form.Check
@@ -193,7 +183,6 @@ function PaymentPage() {
             <ListGroup variant="flush">
               <ListGroup.Item>{address.line1}</ListGroup.Item>
               {!address.line2 ? '' : <ListGroup.Item>{address.line2}</ListGroup.Item>}
-              {/* billing address come directly from the state - either it is the most up to date (input directly from form - despite whether user chooses to save this address) or it is the same as whatever was last saved in the state */}
               <ListGroup.Item>{address.city}</ListGroup.Item>
               <ListGroup.Item>{address.area}</ListGroup.Item>
               <ListGroup.Item>{address.code}</ListGroup.Item>
