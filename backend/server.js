@@ -17,6 +17,7 @@ app.use('/api/flyer', require('./routes/flyerRoutes'))
 const folder = path.resolve()
 app.use('/flyers', express.static(path.join(folder, '/flyers')))
 
+// Serve frontend:
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')))
 
