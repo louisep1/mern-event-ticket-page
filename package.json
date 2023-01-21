@@ -2,7 +2,7 @@
   "name": "event-ticket-page",
   "version": "1.0.0",
   "description": "Page for buying and selling event tickets",
-  "main": "server.js",
+  "main": "./backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
