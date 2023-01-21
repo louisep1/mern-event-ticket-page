@@ -20,7 +20,6 @@ app.use('/flyers', express.static(path.join(folder, '/flyers')))
 // Serve frontend:
 if (process.env.NODE_ENV === 'production') {
   // app.use(express.static(path.join(__dirname, '../frontend/build')))
-
   // app.get('*', (req, res) =>
   //   res.sendFile(
   //     path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
@@ -28,14 +27,21 @@ if (process.env.NODE_ENV === 'production') {
   // )
 
   app.use(express.static(path.join(__dirname, './frontend/build')))
-  app.get('*', function (_, res) {
+  app.get('*', (req, res) =>
     res.sendFile(
-      path.join(__dirname, './frontend/build/index.html'),
-      function (err) {
-        res.status(500).send(err)
-      }
+      path.resolve(__dirname, './', 'frontend', 'build', 'index.html')
     )
-  })
+  )
+
+  // app.use(express.static(path.join(__dirname, '../frontend/build')))
+  // app.get('*', function (_, res) {
+  //   res.sendFile(
+  //     path.join(__dirname, '../frontend/build/index.html'),
+  //     function (err) {
+  //       res.status(500).send(err)
+  //     }
+  //   )
+  // })
 } else {
   app.get('/', (req, res) => res.send('Please set to production'))
 }
