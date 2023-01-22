@@ -2,7 +2,6 @@ const path = require('path')
 const express = require('express')
 const dotenv = require('dotenv').config()
 const colors = require('colors')
-const cors = require('cors')
 const connectDB = require('./backend/config/db')
 const { errorHandler } = require('./backend/middleware/errorMiddleware')
 
@@ -10,7 +9,6 @@ connectDB()
 const app = express()
 
 app.use(express.json())
-app.use(cors())
 
 app.use('/api/event', require('./backend/routes/eventRoutes'))
 app.use('/api/user', require('./backend/routes/userRoutes'))
