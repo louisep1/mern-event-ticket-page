@@ -1,7 +1,6 @@
 
 
 --- event ticket page - bugs / changes
-- no photo - doesn't add to main listings page -- basically uploading from localhost is ok because it adds the image to the flyers folder, then push to github, but for the deployed version, this doesn't work
 - maybe make placeholder example text lighter colour or italics
 - don't need price range entry fields, just sort all tickets by price and included highest and lowest
 - being able to remove ticket types is a problem if users have already purchased - maybe just change to del flg - but still needs to acknowledge that a ticket has been bought and someone has spent money - or disable this feature for when tickets have been purchased and prompt user/seller to contact ticket distributer (event ticket page) directly
@@ -19,3 +18,8 @@
 - in a real app, the validation for the billing address, login details, etc... would be stricter, but as this app is for testing/sample purpose only, they were made lenient with the target audience being recruiters/etc.. in mind, not actual sellers and customers.
 
 - in real app, upon paypal payment completion, don't show console logs
+
+
+
+(note to self about photo uploading - sometimes doesn't add to main listings page -- basically uploading from localhost is ok because it adds the image to the flyers folder which you then push to github - so then displays both in local/dev and production version, 
+but for the deployed version, this doesn't work -- it will upload the image to mongoDB and display as should in the deployed version, but won't show the image locally  --  in that case, need to add check to see if currently in development or in production, then reference the image accordingly)
