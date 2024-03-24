@@ -12,6 +12,7 @@
 - text blocks for event summary and description does not keep line/paragraph spacing in the list of events page
 - allow users to buy multiple tickets without having to keep navigating back to event listings screen and manually do it each time
 - use a generated display ticket id, not the id for the ticket data entry
+- when fields are not filled in and user cannot proceed, indicate to the user which fields are missing (also add a 'required' notation for all required fields)
 - add test files !!!
 
 
