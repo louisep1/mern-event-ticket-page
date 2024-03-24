@@ -44,7 +44,6 @@ const flyer = multer({
 // Route / endpoint
 router.post('/', flyer.single('image'), (req, res) => {
   res.send(`/${req.file.path}`)
-  console.log(req.file.path)
 })
 
 module.exports = router
