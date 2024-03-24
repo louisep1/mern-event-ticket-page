@@ -193,7 +193,7 @@ const CreateEventPage = () => {
           <Form.Label className='mt-2'>Event Name</Form.Label>
           <Form.Control type="string" placeholder="Example Event" id='eventName' value={eventName} onChange={handleChange} />
           <Form.Label className='mt-2'>Event type</Form.Label>
-          <Form.Control type="string" placeholder="Salsa/Dance event" id='eventType' value={eventType} onChange={handleChange} />
+          <Form.Control type="string" placeholder="Music event, festival, etc..." id='eventType' value={eventType} onChange={handleChange} />
           <Form.Label className='mt-2'>Location</Form.Label>
           <Form.Control type="string" placeholder="London, UK" id='location' value={location} onChange={handleChange} />
 
