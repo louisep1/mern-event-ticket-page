@@ -1,1 +1,1 @@
-- the images here are created when you upload an image from localhost 
+- the images here are created when you upload an image from localhost (the path stored in mongoDB is a reference to here)

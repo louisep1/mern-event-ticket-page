@@ -21,5 +21,16 @@
 
 
 
-(note to self about photo uploading - sometimes doesn't add to main listings page -- basically uploading from localhost is ok because it adds the image to the flyers folder which you then push to github - so then displays both in local/dev and production version, 
-but for the deployed version, this doesn't work -- it will upload the image to mongoDB and display as should in the deployed version, but won't show the image locally  --  in that case, need to add check to see if currently in development or in production, then reference the image accordingly)
+
+
+
+
+
+
+
+
+
+========================================
+
+At the moment, images are not being uploaded anywhere. They are simply being put into the flyers folder in the local version of the project, then being added to github and mongoDB is just saving the pathname of that location (hence display in both local and deployed)
+(so images uploaded on the deployed version aren't actually being saved anywhere)
