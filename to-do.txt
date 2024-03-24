@@ -3,15 +3,15 @@
 --- event ticket page - bugs / changes
 - maybe make placeholder example text lighter colour or italics
 - don't need price range entry fields, just sort all tickets by price and included highest and lowest
-- being able to remove ticket types is a problem if users have already purchased - maybe just change to del flg - but still needs to acknowledge that a ticket has been bought and someone has spent money - or disable this feature for when tickets have been purchased and prompt user/seller to contact ticket distributer (event ticket page) directly
-- rethink the available tickets feature - doesn't really work if someone buys a ticket at the same time as the seller edits the field
+- being able to remove ticket types is a problem if users have already purchased - maybe just change to del flg - but still needs to acknowledge that a ticket has been bought and someone has spent money - OR disable this feature for when tickets have been purchased and prompt user/seller to contact ticket distributer (event ticket page) directly to take the listing down
+- rethink the available tickets feature - doesn't really work if someone buys a ticket at the same time as the seller manually edits the input field
 
 
-- clock format for time form input
-- allow for multiple days
-- text blocks for event summary and description does not keep line/paragraph spacing in the list of events page
-- allow users to buy multiple tickets without having to keep navigating back to event listings screen and manually do it each time
-- use a generated display ticket id, not the id for the ticket data entry
+- proper time format for time form input
+- allow for multiple days - i.e. when event goes past midnight (or some festivals might be 2 days or more)
+- text blocks for event summary and description does not keep line/paragraph spacing in the display pages
+- allow users to buy multiple tickets without having to keep navigating back to event listings screen and manually add another one each time
+- use a separate display ticket id, not the id for the ticket data entry in the db (keep this confidential)
 - when fields are not filled in and user cannot proceed, indicate to the user which fields are missing (also add a 'required' notation for all required fields)
 - add test files !!!
 
@@ -26,12 +26,7 @@
 
 
 
-
-
-
-
-
 ========================================
 
-At the moment, images are not being uploaded anywhere. They are simply being put into the flyers folder in the local version of the project, then being added to github and mongoDB is just saving the pathname of that location (hence display in both local and deployed)
+At the moment, images are not being uploaded anywhere. They are simply being put into the flyers folder in the local version of the project, then being added to github, and mongoDB is just saving the pathname of that location (hence images uploaded locally are display in both local and deployed versions)
 (so images uploaded on the deployed version aren't actually being saved anywhere)
