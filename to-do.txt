@@ -13,6 +13,7 @@
 - text blocks for event summary and description does not keep line/paragraph spacing in the list of events page
 - allow users to buy multiple tickets without having to keep navigating back to event listings screen and manually do it each time
 - use a generated display ticket id, not the id for the ticket data entry
+- add test files !!!
 
 
 - in a real app, the validation for the billing address, login details, etc... would be stricter, but as this app is for testing/sample purpose only, they were made lenient with the target audience being recruiters/etc.. in mind, not actual sellers and customers.
