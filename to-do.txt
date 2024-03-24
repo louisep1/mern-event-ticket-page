@@ -3,5 +3,18 @@
 --- event ticket page - bugs / changes
 - no photo - doesn't add to main listings page
 - maybe make placeholder example text lighter colour or italics
-- maybe don't need price range entry fields, just sort all tickets by price and included highest and lowest
-- being able to remove ticket types is a problem if users have already purchased - maybe just change to del flg - but still needs to acknowledge that a ticket has been bought and someone has spent money
+- don't need price range entry fields, just sort all tickets by price and included highest and lowest
+- being able to remove ticket types is a problem if users have already purchased - maybe just change to del flg - but still needs to acknowledge that a ticket has been bought and someone has spent money - or disable this feature for when tickets have been purchased and prompt user/seller to contact ticket distributer (event ticket page) directly
+- rethink the available tickets feature - doesn't really work if someone buys a ticket at the same time as the seller edits the field
+
+
+- clock format for time form input
+- allow for multiple days
+- text blocks for event summary and description does not keep line/paragraph spacing in the list of events page
+- allow users to buy multiple tickets without having to keep navigating back to event listings screen and manually do it each time
+- use a generated display ticket id, not the id for the ticket data entry
+
+
+- in a real app, the validation for the billing address, login details, etc... would be stricter, but as this app is for testing/sample purpose only, they were made lenient with the target audience being recruiters/etc.. in mind, not actual sellers and customers.
+
+- in real app, upon paypal payment completion, don't show console logs
