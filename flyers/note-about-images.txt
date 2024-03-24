@@ -1,0 +1,1 @@
+- the images here are created when you upload an image from localhost 
