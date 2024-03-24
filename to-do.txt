@@ -1,7 +1,7 @@
 
 
 --- event ticket page - bugs / changes
-- no photo - doesn't add to main listings page
+- no photo - doesn't add to main listings page -- basically uploading from localhost is ok because it adds the image to the flyers folder, then push to github, but for the deployed version, this doesn't work
 - maybe make placeholder example text lighter colour or italics
 - don't need price range entry fields, just sort all tickets by price and included highest and lowest
 - being able to remove ticket types is a problem if users have already purchased - maybe just change to del flg - but still needs to acknowledge that a ticket has been bought and someone has spent money - or disable this feature for when tickets have been purchased and prompt user/seller to contact ticket distributer (event ticket page) directly
