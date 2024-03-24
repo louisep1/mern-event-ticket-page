@@ -6,8 +6,6 @@ const Event = require('../models/eventModel')
 // @access   Public
 const getEvents = asyncHandler(async (req, res) => {
   const events = await Event.find({})
-  console.log('======EVENTS=====', events)
-
   res.status(200).json(events)
 })
 
