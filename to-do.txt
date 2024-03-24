@@ -30,3 +30,7 @@
 
 At the moment, images are not being uploaded anywhere. They are simply being put into the flyers folder in the local version of the project, then being added to github, and mongoDB is just saving the pathname of that location (hence images uploaded locally are display in both local and deployed versions)
 (so images uploaded on the deployed version aren't actually being saved anywhere)
+
+-- this is because to upload images to mongoDB directly is a bit more complicated, and it seems to be recommended to upload to separate storage and then reference that url
+https://www.mongodb.com/community/forums/t/storing-images-in-mongodb/152599 
+
