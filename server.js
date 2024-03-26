@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
     )
   )
 } else {
-  app.get('/', (req, res) => res.send('Please set to production'))
+  app.get('/', (req, res) => res.send('Not in production mode'))
 }
 
 app.use(errorHandler)

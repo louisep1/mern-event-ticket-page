@@ -8,18 +8,18 @@ const {
   deleteEvent,
   updateAvailableTickets,
 } = require('../controllers/eventControllers')
-const { protect } = require('../middleware/authMiddleware')
+const { verifyToken } = require('../middleware/authMiddleware')
 
-router.route('/').get(getEvents).post(protect, postEvent)
-router.get('/:id', protect, getMyEvents)
+router.route('/').get(getEvents).post(verifyToken, postEvent)
+router.get('/:id', verifyToken, getMyEvents)
 
 router
   .route('/update/:id')
-  .put(protect, updateEvent)
-  .delete(protect, deleteEvent)
+  .put(verifyToken, updateEvent)
+  .delete(verifyToken, deleteEvent)
 // this is the event ID
 
-router.put('/availableTickets/:id', protect, updateAvailableTickets)
+router.put('/availableTickets/:id', verifyToken, updateAvailableTickets)
 // this id is also the event ID
 
 module.exports = router

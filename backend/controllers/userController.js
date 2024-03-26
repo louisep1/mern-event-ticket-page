@@ -12,7 +12,7 @@ const signIn = asyncHandler(async (req, res) => {
 
   if (!email || !password) {
     res.status(400)
-    throw new Error('Please enter all log in fields')
+    throw new Error('Please enter email and password')
   }
   const user = await User.findOne({ email })
 
@@ -42,7 +42,7 @@ const signUp = asyncHandler(async (req, res) => {
 
   if (!name || !email || !contactNo || !password) {
     res.status(400)
-    throw new Error('Please enter all user fields')
+    throw new Error('Please enter all fields')
   }
 
   const userExists = await User.findOne({ email })
@@ -51,7 +51,7 @@ const signUp = asyncHandler(async (req, res) => {
     throw new Error('That user already exists.')
   }
 
-  // hash and salt password here
+  // !!! hash and salt password here
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(password, salt)
 
