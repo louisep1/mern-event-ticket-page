@@ -137,6 +137,7 @@ const deleteEvent = asyncHandler(async (req, res) => {
   if (req.user.seller) {
     const checkMatch = await Event.findById(req.params.id)
 
+    // !!! here need to add some kind of check to make sure nobody has actually bought any tickets for this event yet - additionally feature to be added in future
     if (checkMatch.createdBy.toString() === req.user._id.toString()) {
       await checkMatch.remove()
 
