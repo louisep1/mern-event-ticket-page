@@ -272,6 +272,9 @@ const clearBasket = asyncHandler(async (req, res) => {
   }
 })
 
+// @ desc    Create record of new order if enough tickets in stock
+// @route    POST /api/user/orders/new
+// @access   Private
 const createOrder = asyncHandler(async (req, res) => {
   const { tickets, payment } = req.body
 

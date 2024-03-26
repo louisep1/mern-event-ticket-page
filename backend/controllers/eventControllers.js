@@ -153,7 +153,7 @@ const deleteEvent = asyncHandler(async (req, res) => {
   }
 })
 
-// @ desc    Update number of available tickets
+// @ desc    Update number of available tickets  !!! ideally move this to be included in the user controller with the rest of the order request
 // @route    PUT /api/event/availableTickets/:id
 // @access   Private
 const updateAvailableTickets = asyncHandler(async (req, res) => {

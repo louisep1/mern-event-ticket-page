@@ -15,6 +15,10 @@
 - when fields are not filled in and user cannot proceed, indicate to the user which fields are missing (also add a 'required' notation for all required fields)
 - add test files !!!
 
+- ideally, I think updateAvailableTickets should be included in the userController where an order is created, not as a separate API call
+
+- consider whether things such as orders should be stored in a separate collection (i.e. if add a new feature where sellers can see details of all tickets that have been purchased, it might be more beneficial to have this data stored in a separate collection/table. Plus side of mongoDB over SQL though is that it can be included in the users collection as it has been - same for basket, etc... and for only adding data for relevant users - i.e. not for sellers)
+
 
 - in a real app, the validation for the billing address, login details, etc... would be stricter, but as this app is for testing/sample purpose only, they were made lenient with the target audience being recruiters/etc.. in mind, not actual sellers and customers.
 
@@ -31,6 +35,6 @@
 At the moment, images are not being uploaded anywhere. They are simply being put into the flyers folder in the local version of the project, then being added to github, and mongoDB is just saving the pathname of that location (hence images uploaded locally are display in both local and deployed versions)
 (so images uploaded on the deployed version aren't actually being saved anywhere)
 
--- this is because to upload images to mongoDB directly is a bit more complicated, and it seems to be recommended to upload to separate storage and then reference that url
+-- this is because to upload images to mongoDB directly is a bit more complicated, and it seems to be recommended to upload to separate storage (which is what I would set up in a real app) and then reference that url
 https://www.mongodb.com/community/forums/t/storing-images-in-mongodb/152599 
 
