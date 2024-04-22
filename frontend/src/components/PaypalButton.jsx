@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createOrder } from "../features/user/userSlice";
 import {
@@ -12,7 +12,7 @@ import Spinner from '../components/Spinner'
 // Custom component to wrap the PayPalButtons and handle currency changes
 const PaypalButton = ({ currency, amount, showSpinner, tickets, address }) => {
 
-  // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+  // usePayPalScriptReducer can be use only inside PayPalScriptProvider
   // This is the main reason to wrap the PayPalButtons in a new component
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
 
